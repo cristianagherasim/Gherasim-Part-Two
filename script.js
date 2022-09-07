@@ -15,14 +15,15 @@ var userInput = document.getElementById('user-input');
 document.getElementById('user-input').addEventListener("keypress", function handleClick(event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        onSubmit();
+     onUserInput
+    ();
     }
 })
-document.getElementById('submit-btn').addEventListener("click", onSubmit);
+document.getElementById('submit-btn').addEventListener("click", onUserInput);
 
 userPrompts.innerText = 'Welcome to GC mini golf! What is your name?';
 
-function onSubmit() {
+function onUserInput() {
 
     if (promptIndex === 0) {
         userName = userInput.value;
@@ -65,10 +66,13 @@ function onSubmit() {
             totalPar = (userScore - 9).toString();
             if (totalPar < 0) {
                 console.log('Great job, '+ userName+ '! Your total par was: '+ totalPar+'.');
+                userPrompts.innerText = 'Great job, '+ userName+ '! Your total par was: '+ totalPar+'.';
             } else if (totalPar > 0) {
                 console.log('Nice try, '+ userName+ '! Your total par was: '+ totalPar+'.');
+                userPrompts.innerText = 'Nice try, '+ userName+ '! Your total par was: '+ totalPar+'.';
             } else {
                 console.log('Good game, '+ userName+ '! Your total par was: 0.');
+                userPrompts.innerText = 'Good game, '+ userName+ '! Your total par was: 0.';
             }
         } else {
             const userScore =
@@ -81,10 +85,13 @@ function onSubmit() {
             totalPar = (userScore - 18).toString();
             if (totalPar < 0) {
                 console.log('Great job, '+ userName+ '! Your total par was: '+ totalPar+'.');
+                userPrompts.innerText =  'Great job, '+ userName+ '! Your total par was: '+ totalPar+'.';
             } else if (totalPar > 0) {
                 console.log('Nice try, '+ userName+ '! Your total par was: '+ totalPar+'.');
+                userPrompts.innerText = 'Nice try, '+ userName+ '! Your total par was: '+ totalPar+'.';
             } else {
                 console.log('Good game, '+ userName+ '! Your total par was: 0.');
+                userPrompts.innerText = 'Good game, '+ userName+ '! Your total par was: 0.';
             }
         }
 
@@ -98,11 +105,12 @@ function onSubmit() {
         'How many putts for hole 4? (par: 3)',
         'How many putts for hole 5? (par: 3)',
         'How many putts for hole 6? (par: 3)',
-        ''
     ];
 
     userInput.value = '';
-    userPrompts.innerText = prompts[promptIndex];
+    if (promptIndex!=7){
+        userPrompts.innerText = prompts[promptIndex];
+    }
     promptIndex += 1;
 
 }
